@@ -13,9 +13,10 @@ async function handleGenrateNewURL(req, res) {
             shortId: shortID,
             redirectURL: body.url,
             visitedHistory: [],
+            createdBy: req.user._id
         });
-
-        return res.json({ id: shortID });
+        return res.render("home", { id: shortID })
+        // return res.json({ id: shortID });
     } catch (error) {
         return res.status(500).json({ error: "Database error", details: error.message });
     }
